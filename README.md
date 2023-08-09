@@ -14,15 +14,17 @@ Figure 01 - High Level Design
 
 In this first design we have 3 tiers as following: 
 **Data Modelling Tier**: The dataset will be split into training set/testing set and predict set. The predicting results will be saved into the relational database with appropriate formats that need to be visual in the web tier. The results of visualization steps are also persistent in the database for demonstrating with the dashboard. Python, R, or Matlab will be used to work with modeling the data.
-**Database Tier**: Mysql or mongodb are using as the data engine with some simplet database tables for storing all necessary data for the project. 
-**Application/Web Tier**: Django will be used to implemented both backend layer and frontend layer with will be combinning with some predefined dashboard templates (implemented in HTML/CSS/Javascript) to illustrate the results.
+<br>**Database Tier**: Mysql or mongodb are using as the data engine with some simplet database tables for storing all necessary data for the project. 
+<br>**Application/Web Tier**: Django will be used to implemented both backend layer and frontend layer with will be combinning with some predefined dashboard templates (implemented in HTML/CSS/Javascript) to illustrate the results.
 However, after researching in details the project, we have adjusted the high level design as below. The main changes in the new design is for transforming of the workload in data manipulation part and the data visualisation from 50%-50% (the initial design) to 75%-25% (the final one).
 
 Figure 02: Adjusted High level design
 ![Adjusted High level design](/images/2.png)
 
 **Data Modelling Tier**: The modelling is keeping as the initial design with some minor steps to extract (R code), transform (R code) then load the data to the selected tool of visualisation (Tableaus public) to develop the interactive web for the dashboards.
+<br>
 **Dataset / Database Tier**: Instead of using big data engine like mysql or mongodb, the datasets and middle results are mainly using the CSV and Excel formats. 
+<br>
 **Visualisation Web Tier with Tableaus Public**: Take the advantages of Tableaus public into account, which are supporting speedly development the dashboard for multiple testing times as well as the capacity of publishing as the web result for using by public users. The high level design was changed from using complicated coding framework like Django or D3js to using Tableaus public for visualizing and publishing the results. 
 
 ## Methodologies
@@ -51,7 +53,7 @@ However, when running with “30 min” and “45 min”, the result of GNN is t
 ### Multilayer Perceptron Model (MLP)
 Multilayer Perceptron is a deep learning and artificial neural network. It is composing of more than one perceptron (multiple). They are combination of one input layer receiving the signal, one output layer making a decision or prediction about the input, and in between those two layers, an arbitrary number of hidden layers that are the true computational engine of the MLP. MLPs with one hidden layer are capable of approximating any continuous function. MLPs are normally use for the supervised learning problems. For the time-series dataset like the current traffic date, MLPRegressor will be used for forecasting the future values based on the regression calculation of existing ones.
 
-**MLP Accuracy Final Result**
+<br>**MLP Accuracy Final Result**
 Not similar to the GNN model result (with 17 sensors for each bound), at the time we worked with MLPRegressor, we just focused on the comparison between 4 selected sensors of base studies.
 
 Comparing the result of LSTM and MLP
@@ -60,10 +62,10 @@ Comparing the result of LSTM and MLP
 The result in the above table shows that LSTM result is better, more stable, and has less variant than the result when we run with MLPRegressor. For example, the highest value of accuracy of East Bound is 94.98% with sensor 14010EB and the lowest value of accuracy is for 14045EB at 61.62%.  The delta (variant) value between these two accuracies is high – at (94.98% - 61.62%) = 33.36%. It’s totally different from the result of LSTM, they have almost value greater than 90% and the variant is just few percents (~ 10%).
 
 ### Visualisation Methodologies
-**Tableaus Public**
+<br>**Tableaus Public**
 The Tableaus Public is the fastest growing data visualisation tool in Business Intelligent Industry. It was considerd to take over the role of complex implementation for dashboards front-end because of its advantages:
 Create quickly the interactive visualisation: the end users can easily create a good interactive widgets and dashboards mostly by drag and drop functions.
-Comfortable implementation: there are many options for visualisation in Tableaus and has been improved the user experience. It’s easy to understand then use comparing to learning code Python for same purpose. 
+<br>**Comfortable implementation**: there are many options for visualisation in Tableaus and has been improved the user experience. It’s easy to understand then use comparing to learning code Python for same purpose. 
 Easily handles large amount of data in different format of inputs: Tableaus now suports multiple data source connections with SQL, NoSQL, Flat files, etc. The different data source and large amount of data does  not affect to the performance of the dashboards.  
 
 # PROJECT ACTIVITIES
@@ -86,14 +88,15 @@ Excel file including a separate sheets for
 All steps in ETL the data
 ![All steps in ETL the data](/images/ETL.png)
 
-Detailed views at:
-https://public.tableau.com/app/profile/qui.tran/viz/TIP-Dashboards/Stories
 
 Initial the visualisation idea with Tableus Public
 At the first try with Tableaus, the data was using with multiple files for predicted and true values for 17 sensors (over 34 files were using). With the complex in the relationship when loading data into Tableaus, it caused some troubles for developing our expected boards. Worked closely with team, we have proposed the new format so that the dashboards can integrate and show the correct output. Below is the first result of the board that we have proposed.
 
 Tableaus Public Initial Boards
 ![Tableaus Public Initial Boards](/images/9.png)
+
+Detailed views at:
+https://public.tableau.com/app/profile/qui.tran/viz/TIP-Dashboards/Stories
 
 # PROJECT OUTCOMES
 As the requirement of the project, our team has provided almost aspects for the project includes:
